@@ -2,3 +2,10 @@
 .Rhistory
 .RData
 .Ruserdata
+*.bz2
+chunks/.DS_Store
+*.RData
+output/.DS_Store
+enwiki-20230501-cirrussearch-content.json
+.RDataTmp
+.DS_Store
