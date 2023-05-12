@@ -4,42 +4,26 @@ library(magrittr)
 
 ##### Unpacking the RData json data
 
-for (dir in 1:2) {
+for (dir in 1:27) {
   WikiJson <- NULL
 
-  for (i in list.files(paste0("chunks/", dir), "*.RData")) {
-    WikiJson[[i]] <- get(load(paste0("chunks/", dir, "/", i)))
+  for (i in list.files(paste0("chunks-sorted/", dir), "*.RData")) {
+    WikiJson[[i]] <- get(load(paste0("chunks-sorted/", dir, "/", i)))
   }
 
-  WikiJson %>%
+  WikiJson <- WikiJson %>%
     enframe %>%
     unnest(cols = c(value)) %>%
     filter(!grepl('^\\{\"index\"', value)) %>%
     rowwise() %>%
     mutate(data = list(fromJSON(value))) %>%
     unnest_wider(data) %>%
-    select(-value) %>%
-    write.csv(., paste0("output/wiki-exports/reformatted-wiki-", dir, ".csv"), row.names = FALSE)
+    select(name, title, weighted_tags, wikibase_item, source_text, external_link, text_bytes, popularity_score) %>%
+    filter(grepl("Culture.Media.Films",weighted_tags)) %>%
+    rowwise %>%
+    mutate_if(is.list, ~paste(unlist(.), collapse = '|')) %>%
+    write.csv(., paste0("output/wiki-exports/film-list-", dir, ".csv"), row.names = FALSE)
 
-  rm(i, x, dir, WikiJson)
+  print(paste("Run", dir, "completed!"))
+  rm(i, x, dir)
 }
-
-##### turn into WikiJson into dataframe
-
-WikiJson2 <-
-  WikiJson %>%
-  enframe %>%
-  unnest(cols = c(value)) %>%
-  filter(!grepl('^\\{\"index\"', value)) %>%
-  rowwise() %>%
-  mutate(data = list(fromJSON(value))) %>%
-  unnest_wider(data) %>%
-  select(-value)
-
-## find film related content
-
-test_find <- WikiJson2 %>% filter(grepl("film)",title))
-
-imdb_find <- WikiJson2 %>% filter(grepl("imdb",external_link))
-
-r_find <- WikiJson2 %>% filter(grepl("Repulsion",title))
