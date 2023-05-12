@@ -17,7 +17,9 @@ find.imdblink <-
   mutate(
     FilmID = paste0("tt", FilmID),
     Studio = str_extract(source_text, "studio = [^_ ]+(?:(?!distributor).)*"),
-    Distributor = str_extract(source_text, "distributor = [^_ ]+(?:(?!released).)*"))
+    Distributor = str_extract(source_text, "distributor = [^_ ]+(?:(?!released).)*")) %>%
+  select(-c(source_text, external_link, weighted_tags)) %T>%
+  write.csv(., "output/wiki-imdblinks.csv", row.names = FALSE)
 
 test_imdblinks <- find.imdblink %>% count(FilmID)
 
@@ -38,6 +40,8 @@ oscarfilms <-
               select(title, wikibase_item, FilmID, Studio, Distributor) %>%
               rename(wiki_title = title) %>%
               distinct(FilmID, .keep_all=TRUE),
-            by="FilmID")
+            by="FilmID") %T>%
+  write.csv(., "output/oscarfilms-wiki-matches.csv", row.names = FALSE)
 missing_wiki <- oscarfilms %>%
-  filter(is.na(wikibase_item))
+  filter(is.na(wikibase_item)) %T>%
+  write.csv(., "output/oscarfilms-wiki-missing.csv", row.names = FALSE)
