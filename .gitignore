@@ -1,43 +1,53 @@
-.Rproj.user
+# History files
 .Rhistory
+.Rapp.history
+
+# Session Data files
 .RData
-.Ruserdata
-*.bz2
-chunks/.DS_Store
-*.RData
-output/.DS_Store
-enwiki-20230501-cirrussearch-content.json
 .RDataTmp
+
+# User-specific files
+.Ruserdata
+
+# Example code in package build process
+*-Ex.R
+
+# Output files from R CMD build
+/*.tar.gz
+
+# Output files from R CMD check
+/*.Rcheck/
+
+# RStudio files
+.Rproj.user/
+
+# produced vignettes
+vignettes/*.html
+vignettes/*.pdf
+
+# OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
+.httr-oauth
+
+# knitr and R markdown default cache directories
+*_cache/
+/cache/
+
+# Temporary files created by R markdown
+*.utf8.md
+*.knit.md
+
+# R Environment Variables
+.Renviron
+
+# pkgdown site
+docs/
+
+# translation temp files
+po/*~
+
+# RStudio Connect folder
+rsconnect/
 .DS_Store
-.RDataTmp1
-.RDataTmp2
-output/wiki-exports/film-list-9.csv
-output/wiki-exports/film-list-8.csv
-output/wiki-exports/film-list-7.csv
-output/wiki-exports/film-list-6.csv
-output/wiki-exports/film-list-5.csv
-output/wiki-exports/film-list-4.csv
-output/wiki-exports/film-list-3.csv
-output/wiki-exports/film-list-27.csv
-output/wiki-exports/film-list-26.csv
-output/wiki-exports/film-list-25.csv
-output/wiki-exports/film-list-24.csv
-output/wiki-exports/film-list-23.csv
-output/wiki-exports/film-list-22.csv
-output/wiki-exports/film-list-21.csv
-output/wiki-exports/film-list-20.csv
-output/wiki-exports/film-list-2.csv
-output/wiki-exports/film-list-19.csv
-output/wiki-exports/film-list-18.csv
-output/wiki-exports/film-list-17.csv
-output/wiki-exports/film-list-16.csv
-output/wiki-exports/film-list-15.csv
-output/wiki-exports/film-list-14.csv
-output/wiki-exports/film-list-13.csv
-output/wiki-exports/film-list-12.csv
-output/wiki-exports/film-list-11.csv
-output/wiki-exports/film-list-10.csv
-output/wiki-exports/film-list-1.csv
-testf/film-list-2.csv
-testf/film-list-1.csv
-.RDataTmp3
+
+chunks/
+input/
