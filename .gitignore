@@ -51,6 +51,5 @@ rsconnect/
 
 chunks/
 chunks-sorted/
-output/wiki-exports/
+output/
 input/
-output/wiki-imdblinks.csv
