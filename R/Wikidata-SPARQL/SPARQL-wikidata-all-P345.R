@@ -28,7 +28,7 @@ for (i in 1:IMDbPasses) {
 WikiData.Films <-
   WikiData.Films %>%
   distinct() %T>%
-  write.csv(., file = "output/WikiData-ComprehensiveFilms.csv")
+  write.csv(., file = "output/wikidata-films-comprehensive.csv")
 
 WikiData.IMDBDistinct <- WikiData.Films %>% distinct(imdb, .keep_all = TRUE)
 
