@@ -51,4 +51,5 @@ rsconnect/
 
 output/chunks/
 output/chunks-sorted/
+output/wiki-export/
 input/
