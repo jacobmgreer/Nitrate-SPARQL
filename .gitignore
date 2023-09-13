@@ -49,7 +49,6 @@ po/*~
 rsconnect/
 .DS_Store
 
-chunks/
-chunks-sorted/
-output/
+output/chunks/
+output/chunks-sorted/
 input/
