@@ -51,6 +51,6 @@ rsconnect/
 
 output/chunks/
 output/chunks-sorted/
-output/wiki-export/
+output/wiki-exports/
 input/
 *wiki-imdblinks.csv
