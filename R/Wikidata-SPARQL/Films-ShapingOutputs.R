@@ -7,7 +7,9 @@ library(glue)
 options(readr.show_col_types = FALSE)
 options(dplyr.summarise.inform = FALSE)
 
-formatted <- read_csv("~/Github/Media-Consumption/ratings/formatted.csv")
+formatted <-
+  read_csv("~/Github/Media-Consumption/ratings/formatted.csv") %>%
+  select(-c(Your.Rating, Date.Rated, IMDb.Rating, Num.Votes, AFI, Theater, Service))
 
 Films.Basic <- read_csv("input/WQS-exports/formatted-basic.csv") %>% distinct(imdb, .keep_all=TRUE)
 
@@ -15,48 +17,48 @@ Films.Distributor <-
   read_csv("input/WQS-exports/formatted-distributor.csv") %>%
   group_by(item, imdb) %>%
   summarize(
-    distIDs = list(distid),
-    distributors = list(distributor))
+    distIDs = str_c(basename(distid), collapse = ","),
+    distributors = str_c(str_c('"', distributor, '"'), collapse = ","))
 
 Films.Genres <-
   read_csv("input/WQS-exports/formatted-genres.csv") %>%
   filter(!is.na(genre_id)) %>%
   group_by(item, imdb) %>%
   summarize(
-    genreIDs = list(genre_id),
-    genres = list(genre))
+    genreIDs = str_c(basename(genre_id), collapse = ","),
+    genres = str_c(str_c('"', genre, '"'), collapse = ","))
 
 Films.IA <-
   read_csv("input/WQS-exports/formatted-ia.csv") %>%
   group_by(item, imdb) %>%
   summarize(
-    ia = list(ia))
+    ia = str_c(str_c('"', ia, '"'), collapse = ","))
 
 Films.Language <-
   read_csv("input/WQS-exports/formatted-language.csv") %>%
   group_by(item, imdb) %>%
   summarize(
-    langIDs = list(langid),
-    langunages = list(language))
+    langIDs = str_c(basename(langid), collapse = ","),
+    languages = str_c(str_c('"', language, '"'), collapse = ","))
 
 Films.MediaType <-
   read_csv("input/WQS-exports/formatted-mediatype.csv") %>%
   group_by(item, imdb) %>%
   summarize(
-    mediaIDs = list(mediaid),
-    mediatypes = list(mediatype))
+    mediaIDs = str_c(basename(mediaid), collapse = ","),
+    mediatypes = str_c(str_c('"', mediatype, '"'), collapse = ","))
 
 Films.Origin <- read_csv("input/WQS-exports/formatted-origin.csv") %>%
   group_by(item, imdb) %>%
   summarize(
-    originIDs = list(originid),
-    origins = list(origin))
+    originIDs = str_c(basename(originid), collapse = ","),
+    origins = str_c(str_c('"', origin, '"'), collapse = ","))
 
 Films.Production <- read_csv("input/WQS-exports/formatted-production.csv") %>%
   group_by(item, imdb) %>%
   summarize(
-    prodIDs = list(prodid),
-    production = list(production))
+    prodIDs = str_c(basename(prodid), collapse = ","),
+    production = str_c(str_c('"', production, '"'), collapse = ","))
 
 Watchlist.Wikidata <-
   left_join(formatted %>% rename(imdb=Const), Films.Basic, by="imdb") %>%
@@ -68,14 +70,8 @@ Watchlist.Wikidata <-
   left_join(., Films.Origin, by=c("item","imdb")) %>%
   left_join(., Films.Production, by=c("item","imdb")) %>%
   mutate(QID = basename(item)) %>%
-  select(QID, everything())
-
-Watchlist.Wikidata %>%
-  as_tibble() %>%
-  mutate_all(~ as.character(.)) %>%
+  select(QID, everything()) %T>%
   write.csv(., file = "output/watchlist-with-wikidata.csv")
-
-save(Watchlist.Wikidata, file = "output/watchlist-with-wikidata.RData")
 
 rm(list=ls(pattern="^Films."))
 rm(formatted)
