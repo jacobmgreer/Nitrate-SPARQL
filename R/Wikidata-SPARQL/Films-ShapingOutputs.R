@@ -71,7 +71,7 @@ Watchlist.Wikidata <-
   left_join(., Films.Production, by=c("item","imdb")) %>%
   mutate(QID = basename(item)) %>%
   select(QID, everything()) %T>%
-  write.csv(., file = "output/watchlist-with-wikidata.csv")
+  write.csv(., file = "output/watchlist-with-wikidata.csv", row.names = FALSE)
 
 rm(list=ls(pattern="^Films."))
 rm(formatted)
