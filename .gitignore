@@ -53,3 +53,4 @@ output/chunks/
 output/chunks-sorted/
 output/wiki-exports/
 input/
+output/wiki-imdblinks.csv
