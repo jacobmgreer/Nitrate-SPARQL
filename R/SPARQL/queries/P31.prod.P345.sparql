@@ -18,6 +18,5 @@ WHERE {
         ?statement2 (ps:P31/(wdt:P279*)) wd:Q10689397. # Television Production Company
       }
     }
-    LIMIT 50000
   }
 }
