@@ -1,0 +1,9 @@
+SELECT DISTINCT
+  ?item
+  ?countryLabel
+WHERE {
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+  ?item p:P31 ?statement0.
+  ?statement0 (ps:P31/(wdt:P279*)) wd:%s.
+  ?item wdt:P17 ?country.
+}
