@@ -1,0 +1,5 @@
+SELECT ?work ?tcm
+WHERE {
+  ?work wdt:P3056 ?tcm.
+}
+LIMIT 50000 OFFSET %s
