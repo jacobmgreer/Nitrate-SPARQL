@@ -9,7 +9,7 @@ for (i in 1:ceiling(as.numeric(query_wikidata("SELECT (COUNT(*) as ?cnt) WHERE {
   QueryData <-
     bind_rows(QueryData,
               query_wikidata(
-                sprintf(read_file('R/SPARQL/queries/P2704.sparql'), format((i-1) * 50000, scientific = F))
+                sprintf(read_file('SPARQL/P2704.sparql'), format((i-1) * 50000, scientific = F))
               )
     )
 
@@ -21,6 +21,6 @@ QueryData <-
   rename(QID=work) %>%
   mutate(QID = basename(QID)) %>%
   distinct() %T>%
-  write.csv(., file = "output/SPARQL/wikidata-films-eidr.csv", row.names = FALSE)
+  write.csv(., file = "output/wikidata-films-eidr.csv", row.names = FALSE)
 
 rm(i, required)

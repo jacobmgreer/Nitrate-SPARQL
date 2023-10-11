@@ -11,7 +11,7 @@ for (i in 1:ceiling(pref / 50000)) {
   QueryData <-
     bind_rows(QueryData,
               query_wikidata(
-                sprintf(read_file('R/SPARQL/queries/P345refs.sparql'), format((i-1) * 50000, scientific = F))
+                sprintf(read_file('SPARQL/P345refs.sparql'), format((i-1) * 50000, scientific = F))
               )
     )
 
@@ -23,6 +23,6 @@ for (i in 1:ceiling(pref / 50000)) {
 #   rename(QID=work) %>%
 #   mutate(QID = basename(QID)) %>%
 #   distinct() %T>%
-#   write.csv(., file = "output/SPARQL/wikidata-films-imdb.csv", row.names = FALSE)
+#   write.csv(., file = "output/wikidata-films-imdb.csv", row.names = FALSE)
 
 rm(i, required)
