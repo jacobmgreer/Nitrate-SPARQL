@@ -4,16 +4,17 @@ lapply(required, require, character.only = TRUE)
 options(readr.show_col_types = FALSE)
 
 QueryData <- NULL
+Films <- as.numeric(query_wikidata("SELECT (COUNT(*) as ?cnt) WHERE {?s wdt:P345 ?o}"))
 
-for (i in 1:ceiling(as.numeric(query_wikidata("SELECT (COUNT(*) as ?cnt) WHERE {?s wdt:P345 ?o}")) / 50000)) {
+for (i in 1:ceiling(Films / 47000)) {
   QueryData <-
     bind_rows(QueryData,
               query_wikidata(
-                sprintf(read_file('SPARQL/P345.sparql'), format((i-1) * 50000, scientific = F))
+                sprintf(read_file('SPARQL/P345.sparql'), format((i-1) * 47000, scientific = F))
                 )
               )
 
-  message(paste("SPARQL",i))
+  message(paste("SPARQL", i))
 }
 
 QueryData <-

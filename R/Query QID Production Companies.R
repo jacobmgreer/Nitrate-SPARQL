@@ -15,10 +15,13 @@ QueryData <-
   distinct() %T>%
   write.csv(., file = "output/wikidata-companies-country.csv", row.names = FALSE)
 
+prod.tv <- query_wikidata(read_file('SPARQL/P31.prodt.P345.sparql')) #television production
+prod.film <- query_wikidata(read_file('SPARQL/P31.prodf.P345.sparql')) #film production
+prod <- query_wikidata(read_file('SPARQL/P31.prod.P345.sparql')) #production
+
 QueryData <-
-  query_wikidata(
-    read_file('SPARQL/P31.prod.P345.sparql')
-  ) %>%
+  bind_rows(prod.tv, prod.film) %>%
+  bind_rows(., prod) %>%
   rename(QID = item) %>%
   mutate(QID = basename(QID)) %>%
   distinct() %T>%

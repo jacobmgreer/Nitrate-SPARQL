@@ -5,7 +5,7 @@ options(readr.show_col_types = FALSE)
 
 QueryData <- NULL
 
-#           pref <- as.numeric(query_wikidata("SELECT (COUNT(*) as ?cnt) WHERE {?item p:P345 ?check. ?check prov:wasDerivedFrom ?refc.}"))
+#pref <- as.numeric(query_wikidata("SELECT (COUNT(*) as ?cnt) WHERE {?item p:P345 ?check. ?check prov:wasDerivedFrom ?refc.}"))
 
 for (i in 1:ceiling(pref / 50000)) {
   QueryData <-

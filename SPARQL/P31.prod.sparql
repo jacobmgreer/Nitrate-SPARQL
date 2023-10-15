@@ -5,6 +5,9 @@ SELECT DISTINCT ?item ?itemLabel ?itemDescription ?article WHERE {
       {
         ?item p:P31 ?statement0.
         ?statement0 (ps:P31/(wdt:P279*)) wd:Q11396960.
+        MINUS {?statement0 (ps:P31/(wdt:P279*)) wd:Q11812394}
+        MINUS {?statement0 (ps:P31/(wdt:P279*)) wd:Q105815710}
+        MINUS {?statement0 ps:P452 wd:Q4373046}
       }
       UNION
       {
@@ -17,8 +20,19 @@ SELECT DISTINCT ?item ?itemLabel ?itemDescription ?article WHERE {
         ?statement2 (ps:P31/(wdt:P279*)) wd:Q10689397.
       }
     }
-    LIMIT 50000
   }
+  MINUS {?item wdt:P31 wd:Q11812394}
+  MINUS {?item wdt:P31 wd:Q105815710}
+  MINUS {?item wdt:P31 wd:Q3982337}
+  MINUS {?item wdt:P31 wd:Q11812394}
+  MINUS {?item wdt:P31 wd:Q30941437}
+  MINUS {?item wdt:P31 wd:Q11074464}
+  MINUS {?item wdt:P31 wd:Q20819922}
+  MINUS {?item wdt:P31 wd:Q742421}
+  MINUS {?item wdt:P31 wd:Q101040848}
+  MINUS {?item wdt:P31 wd:Q106040099}
+  MINUS {?item wdt:P452 wd:Q4373046}
+  MINUS {?item wdt:P452 wd:Q185529}
   OPTIONAL {
     ?article schema:about ?item ;
              schema:isPartOf <https://en.wikipedia.org/> .
