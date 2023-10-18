@@ -1,0 +1,10 @@
+SELECT DISTINCT ?item ?origin
+WHERE {
+  ?item wdt:P31 wd:Q11424.
+  ?item wdt:P495 ?o.
+  SERVICE wikibase:label {
+    bd:serviceParam wikibase:language "en".
+    ?o rdfs:label ?origin.
+  }
+}
+LIMIT 50000 OFFSET %s

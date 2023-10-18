@@ -1,0 +1,5 @@
+SELECT ?item ?value
+WHERE {
+  ?item wdt:P3056 ?value.
+}
+LIMIT 50000 OFFSET %s

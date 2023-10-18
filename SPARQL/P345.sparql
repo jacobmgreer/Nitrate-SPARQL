@@ -1,5 +1,0 @@
-SELECT ?work ?imdb
-WHERE {
-  ?work wdt:P345 ?imdb.
-}
-LIMIT 50000 OFFSET %s

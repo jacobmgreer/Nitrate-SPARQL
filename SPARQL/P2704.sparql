@@ -1,5 +1,0 @@
-SELECT ?work ?eidr
-WHERE {
-  ?work wdt:P2704 ?eidr.
-}
-LIMIT 50000 OFFSET %s

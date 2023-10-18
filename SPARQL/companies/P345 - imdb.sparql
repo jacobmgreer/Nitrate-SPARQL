@@ -1,0 +1,25 @@
+SELECT DISTINCT
+  ?item
+  ?imdb
+WHERE {
+  ?item wdt:P345 ?imdb .
+  ?item p:P31 ?statement0.
+  ?item wdt:P31 ?inst.
+  VALUES (?inst) {
+    (wd:Q1762059)
+    (wd:Q11396960)
+    (wd:Q10689397)
+  }
+  MINUS {?item wdt:P31 wd:Q11812394} # theatre company
+  MINUS {?item wdt:P31 wd:Q105815710} # performing arts group
+  MINUS {?item wdt:P31 wd:Q3982337} # puppetry company
+  MINUS {?item wdt:P31 wd:Q30941437} # pornographic film studio
+  MINUS {?item wdt:P31 wd:Q11074464} # pornographic website
+  MINUS {?item wdt:P31 wd:Q20819922} # opera company
+  MINUS {?item wdt:P31 wd:Q742421} # theatrical troupe
+  MINUS {?item wdt:P31 wd:Q101040848} # pornographic company
+  MINUS {?item wdt:P31 wd:Q106040099} # adult content subscription service
+  MINUS {?item wdt:P452 wd:Q4373046} # pornographic industry
+  MINUS {?item wdt:P452 wd:Q185529} # pornographic film
+}
+LIMIT 50000 OFFSET %s

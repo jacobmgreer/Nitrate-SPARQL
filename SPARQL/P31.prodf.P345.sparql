@@ -1,6 +1,0 @@
-SELECT DISTINCT ?item ?imdb
-WHERE {
-  ?item wdt:P345 ?imdb .
-  ?item p:P31 ?statement1.
-  ?statement1 (ps:P31/(wdt:P279*)) wd:Q1762059. # Film Production Company
-}
