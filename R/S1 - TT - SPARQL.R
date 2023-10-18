@@ -27,17 +27,17 @@ source("R/query function.R")
 #           ?i wdt:P31 wd:Q11424
 #           MINUS {?i wdt:P345 ?v.}}"))
 
-# films("films/P57 - director.sparql",
-#       query_wikidata("
-#         SELECT (COUNT(*) as ?cnt)
-#         WHERE {?item wdt:P57 ?o.}"))
-
-films("films/P495 - country.sparql",
+films("films/P57 - director.sparql",
       query_wikidata("
         SELECT (COUNT(*) as ?cnt)
-        WHERE {
-          ?i wdt:P31 wd:Q11424.
-          ?i wdt:P495 ?o.}"))
+        WHERE {?item wdt:P57 ?o.}"))
+
+# films("films/P495 - country.sparql",
+#       query_wikidata("
+#         SELECT (COUNT(*) as ?cnt)
+#         WHERE {
+#           ?i wdt:P31 wd:Q11424.
+#           ?i wdt:P495 ?o.}"))
 
 # films("films/P364 - language.sparql",
 #       query_wikidata("

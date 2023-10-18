@@ -19,7 +19,6 @@ name_basics_tsv <-
              delim = "\t", escape_double = FALSE,
              trim_ws = TRUE)
 
-
 QID.IMDbCO <-
   read_csv("output/films/P345 - imdb.csv") %>%
   filter(grepl("^co", value)) %T>%
