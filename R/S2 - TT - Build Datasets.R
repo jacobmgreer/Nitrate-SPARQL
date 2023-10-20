@@ -42,9 +42,9 @@ QID.IMDbDir <-
   read_csv("output/films/P345 - imdb.csv") %>%
   filter(grepl("^tt", value)) %>%
   left_join(title_crew %>%
-            select(tconst, directors),
-          by=c("value" = "tconst"),
-          relationship = "many-to-many") %>%
+              select(tconst, directors),
+            by=c("value" = "tconst"),
+            relationship = "many-to-many") %>%
   left_join(name_basics_tsv %>%
               select(nconst, primaryName),
             by=c("directors" = "nconst"),
