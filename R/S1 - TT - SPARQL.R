@@ -5,10 +5,10 @@ options(readr.show_col_types = FALSE)
 
 source("R/query function.R")
 
-languages <-
-  query_wikidata(read_file("SPARQL/languages.sparql")) %>%
-  mutate(item = basename(item)) %T>%
-  write.csv(., "reports/language-table.csv", row.names = FALSE, na = "")
+# languages <-
+#   query_wikidata(read_file("SPARQL/languages.sparql")) %>%
+#   mutate(item = basename(item)) %T>%
+#   write.csv(., "output/language-ids.csv", row.names = FALSE)
 
 
 films("films/P345 - imdb.sparql",
