@@ -1,9 +1,5 @@
 SELECT DISTINCT ?item ?director
 WHERE {
-  ?item wdt:P57 ?o.
-  SERVICE wikibase:label {
-    bd:serviceParam wikibase:language "en".
-    ?o rdfs:label ?director.
-  }
+  ?item wdt:P57 ?director.
 }
 LIMIT 50000 OFFSET %s

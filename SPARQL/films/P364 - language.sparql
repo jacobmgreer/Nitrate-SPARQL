@@ -1,10 +1,6 @@
 SELECT DISTINCT ?item ?lang
 WHERE {
   ?item wdt:P31 wd:Q11424.
-  ?item wdt:P364 ?o.
-  SERVICE wikibase:label {
-    bd:serviceParam wikibase:language "en".
-    ?o rdfs:label ?lang.
-  }
+  ?item wdt:P364 ?lang.
 }
 LIMIT 50000 OFFSET %s

@@ -20,6 +20,22 @@ films("films/P2704 - eidr.sparql",
         SELECT (COUNT(*) as ?cnt)
         WHERE {?item wdt:P2704 ?o}"))
 
+films("films/P1874 - netflix.sparql",
+      query_wikidata("
+        SELECT (COUNT(*) as ?cnt)
+        WHERE {?item wdt:P1874 ?o}"))
+
+films("films/P480 - fa films.sparql",
+      query_wikidata("
+        SELECT (COUNT(*) as ?cnt)
+        WHERE {?item wdt:P480 ?o}"))
+
+films("films/P5749 - amazon id.sparql",
+      query_wikidata("
+        SELECT (COUNT(*) as ?cnt)
+        WHERE {?item wdt:P31 wd:Q11424.
+               ?item wdt:P5749 ?a.}"))
+
 films("films/Q11424 - films wo imdb.sparql",
       query_wikidata("
         SELECT (COUNT(*) as ?cnt)
@@ -27,23 +43,28 @@ films("films/Q11424 - films wo imdb.sparql",
           ?i wdt:P31 wd:Q11424
           MINUS {?i wdt:P345 ?v.}}"))
 
-# films("films/P57 - director.sparql",
-#       query_wikidata("
-#         SELECT (COUNT(*) as ?cnt)
-#         WHERE {?item wdt:P57 ?o.}"))
+films("films/P57 - director.sparql",
+      query_wikidata("
+        SELECT (COUNT(*) as ?cnt)
+        WHERE {?item wdt:P57 ?o.}"))
 
-# films("films/P495 - country.sparql",
-#       query_wikidata("
-#         SELECT (COUNT(*) as ?cnt)
-#         WHERE {
-#           ?i wdt:P31 wd:Q11424.
-#           ?i wdt:P495 ?o.}"))
+films("films/P495 - country.sparql",
+      query_wikidata("
+        SELECT (COUNT(*) as ?cnt)
+        WHERE {
+          ?i wdt:P31 wd:Q11424.
+          ?i wdt:P495 ?o.}"))
 
-# films("films/P364 - language.sparql",
-#       query_wikidata("
-#         SELECT (COUNT(*) as ?cnt)
-#         WHERE {
-#           ?i wdt:P31 wd:Q11424.
-#           ?i wdt:P364 ?o.}"))
+films("films/P364 - language.sparql",
+      query_wikidata("
+        SELECT (COUNT(*) as ?cnt)
+        WHERE {
+          ?i wdt:P31 wd:Q11424.
+          ?i wdt:P364 ?o.}"))
+
+films("films/labels.sparql",
+      query_wikidata("
+        SELECT (COUNT(*) as ?cnt)
+        WHERE {?item wdt:P2704 ?o}")) ## just running for EIDR now
 
 rm(required)

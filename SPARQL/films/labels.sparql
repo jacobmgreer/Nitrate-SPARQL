@@ -1,0 +1,27 @@
+SELECT ?item ?Een ?Eru ?Efr ?Ede ?Ear ?Eja
+WHERE
+{
+  ?item wdt:P2704 ?value.
+  OPTIONAL {
+    ?item rdfs:label ?Een filter (lang(?Een) = "en").
+  }
+  OPTIONAL {
+    ?item rdfs:label ?Een filter (lang(?Een) = "en").
+  }
+  OPTIONAL {
+    ?item rdfs:label ?Eru filter (lang(?Eru) = "ru").
+  }
+  OPTIONAL {
+    ?item rdfs:label ?Efr filter (lang(?Efr) = "fr").
+  }
+  OPTIONAL {
+    ?item rdfs:label ?Ede filter (lang(?Ede) = "de").
+  }
+  OPTIONAL {
+    ?item rdfs:label ?Ear filter (lang(?Ear) = "ar").
+  }
+  OPTIONAL {
+    ?item rdfs:label ?Eja filter (lang(?Eja) = "ja").
+  }
+}
+LIMIT 50000 OFFSET %s
