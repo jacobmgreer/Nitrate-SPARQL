@@ -5,6 +5,12 @@ options(readr.show_col_types = FALSE)
 
 source("R/query function.R")
 
+languages <-
+  query_wikidata(read_file("SPARQL/languages.sparql")) %>%
+  mutate(item = basename(item)) %T>%
+  write.csv(., "reports/language-table.csv", row.names = FALSE, na = "")
+
+
 films("films/P345 - imdb.sparql",
       query_wikidata("
         SELECT (COUNT(*) as ?cnt)
@@ -19,22 +25,6 @@ films("films/P2704 - eidr.sparql",
       query_wikidata("
         SELECT (COUNT(*) as ?cnt)
         WHERE {?item wdt:P2704 ?o}"))
-
-films("films/P1874 - netflix.sparql",
-      query_wikidata("
-        SELECT (COUNT(*) as ?cnt)
-        WHERE {?item wdt:P1874 ?o}"))
-
-films("films/P480 - fa films.sparql",
-      query_wikidata("
-        SELECT (COUNT(*) as ?cnt)
-        WHERE {?item wdt:P480 ?o}"))
-
-films("films/P5749 - amazon id.sparql",
-      query_wikidata("
-        SELECT (COUNT(*) as ?cnt)
-        WHERE {?item wdt:P31 wd:Q11424.
-               ?item wdt:P5749 ?a.}"))
 
 films("films/Q11424 - films wo imdb.sparql",
       query_wikidata("

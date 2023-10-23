@@ -1,0 +1,14 @@
+SELECT
+  ?item
+  ?c
+  ?wdlabelen
+WHERE
+{
+  ?item wdt:P424 ?c .
+  hint:Prior hint:rangeSafe true .
+  MINUS{?item wdt:P31 wd:Q47495990}
+  MINUS{?item wdt:P31/wdt:P279* wd:Q14827288} #exclude Wikimedia projects
+  MINUS{?item wdt:P31/wdt:P279* wd:Q17442446} #exclude Wikimedia internal stuff
+  OPTIONAL { ?item rdfs:label ?wdlabelen . FILTER(lang(?wdlabelen)="en") }
+}
+ORDER BY ?c

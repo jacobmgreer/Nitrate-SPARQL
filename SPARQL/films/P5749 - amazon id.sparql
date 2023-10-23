@@ -1,6 +1,0 @@
-SELECT DISTINCT ?item ?amazon
-WHERE {
-  ?item wdt:P31 wd:Q11424.
-  ?item wdt:P5749 ?amazon.
-}
-LIMIT 50000 OFFSET %s
