@@ -8,5 +8,6 @@ source("R/query function.R")
 films("companies/P345 - imdb.sparql", 40000) ## capping this at 40000, since it's under
 films("companies/P31 - company details.sparql", 40000) ## capping this at 40000, since it's under
 films("companies/P17 - country.sparql", 40000) ## capping this at 40000, since it's under
+films("companies/P12142 - eidr party.sparql", 40000) ## capping this at 40000, since it's under
 
 rm(required)

@@ -1,0 +1,6 @@
+SELECT DISTINCT
+  ?item
+  ?eidrparty
+WHERE {
+  ?item wdt:P12142 ?eidrparty .}
+LIMIT 50000 OFFSET %s
