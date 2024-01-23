@@ -9,7 +9,7 @@ title_basics_tsv <-
              trim_ws = TRUE) %>%
   filter(titleType == "movie")
 title_crew <-
-  read_delim("~/Downloads/imdb/title.crew.tsv",
+  read_delim("~/Downloads/imdb/title.crew.tsv.gz",
              delim = "\t", escape_double = FALSE,
              trim_ws = TRUE) %>%
   select(tconst, directors) %>%

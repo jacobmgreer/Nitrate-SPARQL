@@ -1,0 +1,8 @@
+SELECT ?item ?value ?article
+WHERE {
+  ?item wdt:P2889 ?value.
+  OPTIONAL {
+    ?article schema:about ?item ;
+             schema:isPartOf <https://en.wikipedia.org/> .}
+}
+LIMIT 50000 OFFSET %s

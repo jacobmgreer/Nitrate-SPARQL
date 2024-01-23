@@ -1,5 +1,0 @@
-SELECT ?item ?value
-WHERE {
-  ?item wdt:P2889 ?value.
-}
-LIMIT 50000 OFFSET %s
